@@ -1,3 +1,79 @@
+*,
+*::before,
+*::after  {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-} 
+    padding: 0;
+    background-color: antiquewhite;
+}
+
+.menu-container {
+    background-color: white;
+    padding: 10px 0 20px 0;
+}
+
+.menu {
+    width: 80%;
+    list-style: none;
+    /* background-color: aquamarine; */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.emoji {
+    font-size: 64px;
+    width: 80%;
+    transform: translateX(-12px);
+}
+
+.item-info {
+    font-family: 'Smythe', system-ui;
+}
+
+.item-info > * {
+    margin: 0;
+}
+
+.item-name {
+    font-weight: 400;
+}
+
+.ingredients {
+    color: #8B8B8B;
+}
+
+.price {
+    margin-top: 10px;
+}
+
+.add-to-card__btn {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #DEDEDE;
+    background-color: white;
+    font-size: 28px;
+    color: #3c3c3c;
+    margin-left: auto;
+}
+
+hr {
+    margin: 0;
+    height: 1px;
+    background-color: #D2D2D2;
+    border: none;
+}
+@media only screen and (max-width: 600px) {
+    .menu-container {
+        width: 600px;
+    }
+}
