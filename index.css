@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: antiquewhite;
+    font-family: 'Smythe', system-ui;
 }
 
 .menu-container {
@@ -34,10 +35,6 @@ body {
     transform: translateX(-12px);
 }
 
-.item-info {
-    font-family: 'Smythe', system-ui;
-}
-
 .item-info > * {
     margin: 0;
 }
@@ -56,13 +53,19 @@ body {
 
 .add-to-card__btn {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border: 1px solid #DEDEDE;
     background-color: white;
     font-size: 28px;
     color: #3c3c3c;
     margin-left: auto;
+    cursor: pointer;
+}
+
+.add-to-card__btn:hover {
+    background-color: rgb(245, 244, 244);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
 hr {
@@ -71,6 +74,37 @@ hr {
     background-color: #D2D2D2;
     border: none;
 }
+
+.pre-checkout-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.pre-checkout-list > hr {
+    width: 100%;
+}
+
+.complete-order-btn {
+    background-color: #16DB99;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.complete-order-btn:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
 @media only screen and (min-width: 600px) {
     .wrapper {
         display: flex;
@@ -84,5 +118,10 @@ hr {
     .menu-container {
         width: 600px;
         background-color: white;
+    }
+
+    .add-to-card__btn {
+        height: 50px;
+        width: 50px;
     }
 }
