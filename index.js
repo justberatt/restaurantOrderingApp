@@ -27,17 +27,24 @@ menu.addEventListener('click', (e) => {
 const handleAddToCartClick = (e) => {
     console.log("targetID: ", e.target.id)
     menuArray.forEach(item => {
-        if (e.target.id === item.id) {
-            console.log(item.id)
+        if (e.target.id == item.id) {
+            const preCheckoutList = `
+                <li>
+                    <h2 id="${item.name.toLowerCase()}" class="item-name">${item.name}</h2>
+                    <button>remove</button>
+                    <h4 class="price">$${item.price}</h4>
+                </li>
+            `
+            document.querySelector('#items-ordered').innerHTML = preCheckoutList
         }
     })
     // const preCheckoutList = menuArray.map(item => {
     //     return `
-    //         <li>
-    //             <h2 id="${item.name.toLowerCase()}" class="item-name">${item.name}</h2>
-    //             <button>remove</button>
-    //             <h4 class="price">$${item.price}</h4>
-    //         </li>
+            // <li>
+            //     <h2 id="${item.name.toLowerCase()}" class="item-name">${item.name}</h2>
+            //     <button>remove</button>
+            //     <h4 class="price">$${item.price}</h4>
+            // </li>
     //     `
     // })
     // document.querySelector('#items-ordered').innerHTML = preCheckoutList
