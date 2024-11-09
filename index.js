@@ -12,7 +12,7 @@ const menuItems = menuArray.map(item => {
                 <p class="ingredients">${item.ingredients.join(' ')}</p>
                 <h4 class="price">$${item.price}</h4>
             </div>
-            <button class="add-to-card__btn" id="${item.id}">+</button>
+            <button class="add-to-card__btn" data-add="${item.id}">+</button>
         </li>
         <hr>
     `
@@ -20,32 +20,52 @@ const menuItems = menuArray.map(item => {
 
 menu.innerHTML = menuItems;
 
-menu.addEventListener('click', (e) => {
-    handleAddToCartClick(e)
+document.addEventListener('click', (e) => {
+    if (e.target.dataset.add)
+        handleAddToListClick(e.target.dataset.add);
+    if (e.target.dataset.remove)
+        handleRemoveFromListClick(e.target.dataset.remove)
+    
+    const preCheckoutListContainer = document.querySelector('#pre-checkout-list-container');
+    if (checkoutListArr.length !== 0) {
+        preCheckoutListContainer.classList.remove('hidden')
+    } else {
+        preCheckoutListContainer.classList.add('hidden')
+    }
 })
 
-const handleAddToCartClick = (e) => {
-    console.log("targetID: ", e.target.id)
+
+const checkoutListArr = [];
+
+const handleAddToListClick = (addButtonID) => {
     menuArray.forEach(item => {
-        if (e.target.id == item.id) {
-            const preCheckoutList = `
-                <li>
-                    <h2 id="${item.name.toLowerCase()}" class="item-name">${item.name}</h2>
-                    <button>remove</button>
-                    <h4 class="price">$${item.price}</h4>
-                </li>
-            `
-            document.querySelector('#items-ordered').innerHTML = preCheckoutList
+        if (addButtonID == item.id) {
+            checkoutListArr.push(item)
+            renderPrecheckoutList()
         }
     })
-    // const preCheckoutList = menuArray.map(item => {
-    //     return `
-            // <li>
-            //     <h2 id="${item.name.toLowerCase()}" class="item-name">${item.name}</h2>
-            //     <button>remove</button>
-            //     <h4 class="price">$${item.price}</h4>
-            // </li>
-    //     `
-    // })
-    // document.querySelector('#items-ordered').innerHTML = preCheckoutList
 }
+
+const renderPrecheckoutList = () => {
+    const preCheckoutList = checkoutListArr.map(item => {
+        return `
+            <li class="ordered-item">
+                <h2 id="${item.name.toLowerCase()}" class="ordered-item-name">${item.name}</h2>
+                <button class="remove-btn" id="remove-btn" data-remove="${item.id}">remove</button>
+                <h4 class="price">$${item.price}</h4>
+            </li>
+        `
+    }).join('')
+    document.querySelector('#pre-checkout-list').innerHTML = preCheckoutList
+}
+
+const handleRemoveFromListClick = (removeButtonID) => {
+    const item = checkoutListArr.filter(item => item.id == removeButtonID)
+    const itemIndex = checkoutListArr.indexOf(item)
+    checkoutListArr.splice(itemIndex, 1)
+    renderPrecheckoutList()
+}
+// const togglePreCheckoutList = () => {
+//     const preCheckoutList = document.querySelector('#pre-checkout-list');
+//     if (preCheckoutList)
+// }
