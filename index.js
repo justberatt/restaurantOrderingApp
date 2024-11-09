@@ -81,4 +81,5 @@ const totalPrice = (arr) => {
 const handleCompleteOrderClick = () => {
     const modal = document.querySelector('#modal');
     modal.classList.remove('hidden')
+    menu.style.opacity = '20%'
 }
