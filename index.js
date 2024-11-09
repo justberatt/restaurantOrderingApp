@@ -25,15 +25,18 @@ document.addEventListener('click', (e) => {
         handleAddToListClick(e.target.dataset.add);
     if (e.target.dataset.remove)
         handleRemoveFromListClick(e.target.dataset.remove)
-    
+    if (e.target.id === 'complete-order-btn')
+        handleCompleteOrderClick()
+})
+
+const handlePreCheckoutToggle = () => {
     const preCheckoutListContainer = document.querySelector('#pre-checkout-list-container');
     if (checkoutListArr.length !== 0) {
         preCheckoutListContainer.classList.remove('hidden')
     } else {
         preCheckoutListContainer.classList.add('hidden')
     }
-})
-
+}
 
 const checkoutListArr = [];
 
@@ -45,6 +48,7 @@ const handleAddToListClick = (addButtonID) => {
             totalPrice(checkoutListArr)
         }
     })
+    handlePreCheckoutToggle()
 }
 
 const renderPrecheckoutList = () => {
@@ -61,14 +65,20 @@ const renderPrecheckoutList = () => {
 }
 
 const handleRemoveFromListClick = (removeButtonID) => {
-    const item = checkoutListArr.filter(item => item.id == removeButtonID)
+    const item = checkoutListArr.filter(item => item.id == removeButtonID)[0]
     const itemIndex = checkoutListArr.indexOf(item)
     checkoutListArr.splice(itemIndex, 1)
     renderPrecheckoutList()
     totalPrice(checkoutListArr)
+    handlePreCheckoutToggle()
 }
 
 const totalPrice = (arr) => {
     const totalPrice = document.querySelector('#total-price');
     totalPrice.innerHTML = '$' + arr.reduce((total, currentItem) => total + currentItem.price, 0)
+}
+
+const handleCompleteOrderClick = () => {
+    const modal = document.querySelector('#modal');
+    modal.classList.remove('hidden')
 }

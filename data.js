@@ -14,8 +14,8 @@ export const menuArray = [
         id: 1
     },
         {
-        name: "Beer",
-        ingredients: ["grain, hops, yeast, water"],
+        name: "Hoshaf",
+        ingredients: ["pistachios, almonds, walnuts, water"],
         price: 12,
         emoji: "🍺",
         id: 2
