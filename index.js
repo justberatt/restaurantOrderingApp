@@ -70,5 +70,5 @@ const handleRemoveFromListClick = (removeButtonID) => {
 
 const totalPrice = (arr) => {
     const totalPrice = document.querySelector('#total-price');
-    totalPrice.innerHTML = arr.reduce((total, currentItem) => total + currentItem.price, 0)
+    totalPrice.innerHTML = '$' + arr.reduce((total, currentItem) => total + currentItem.price, 0)
 }
