@@ -35,7 +35,8 @@ body {
     transform: translateX(-12px);
 }
 
-.item-info > * {
+.item-info,
+.ordered-item > * {
     margin: 0;
 }
 
