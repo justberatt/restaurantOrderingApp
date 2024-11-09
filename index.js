@@ -42,6 +42,7 @@ const handleAddToListClick = (addButtonID) => {
         if (addButtonID == item.id) {
             checkoutListArr.push(item)
             renderPrecheckoutList()
+            totalPrice(checkoutListArr)
         }
     })
 }
@@ -64,8 +65,10 @@ const handleRemoveFromListClick = (removeButtonID) => {
     const itemIndex = checkoutListArr.indexOf(item)
     checkoutListArr.splice(itemIndex, 1)
     renderPrecheckoutList()
+    totalPrice(checkoutListArr)
 }
-// const togglePreCheckoutList = () => {
-//     const preCheckoutList = document.querySelector('#pre-checkout-list');
-//     if (preCheckoutList)
-// }
+
+const totalPrice = (arr) => {
+    const totalPrice = document.querySelector('#total-price');
+    totalPrice.innerHTML = arr.reduce((total, currentItem) => total + currentItem.price, 0)
+}
