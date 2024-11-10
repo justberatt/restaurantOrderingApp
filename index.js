@@ -31,6 +31,21 @@ document.addEventListener('click', (e) => {
         closeModal()
 })
 
+const cardInput = document.getElementById('card-number');
+const cvvInput = document.getElementById('cvv-number');
+
+cardInput.addEventListener('input', (e) => {
+    // Remove any non-digit characters
+    let value = e.target.value.replace(/\D/g, '');
+    // Insert a space every 4 digits
+    value = value.match(/.{1,4}/g)?.join(' ') || '';
+    e.target.value = value;
+});
+
+cvvInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3); // Only allow three digits
+});
+
 const handlePreCheckoutToggle = () => {
     const preCheckoutListContainer = document.querySelector('#pre-checkout-list-container');
     if (checkoutListArr.length !== 0) {
