@@ -6,6 +6,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+        <!-- Font Awesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
         <div class="wrapper">
@@ -23,7 +25,12 @@
                 </div>
             </div>
         </div>
+        <div class="overlay hidden" id="overlay"></div>
         <div class="modal hidden" id="modal">
+            <i 
+                class="fa-regular fa-circle-xmark close-modal-btn"
+                id="close-modal-btn">
+            </i>
             <form class="payment-form">
                 <h4>Enter Card Details</h4>
                 <input

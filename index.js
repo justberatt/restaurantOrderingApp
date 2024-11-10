@@ -27,6 +27,8 @@ document.addEventListener('click', (e) => {
         handleRemoveFromListClick(e.target.dataset.remove)
     if (e.target.id === 'complete-order-btn')
         handleCompleteOrderClick()
+    if (e.target.id === 'close-modal-btn')
+        closeModal()
 })
 
 const handlePreCheckoutToggle = () => {
@@ -80,6 +82,18 @@ const totalPrice = (arr) => {
 
 const handleCompleteOrderClick = () => {
     const modal = document.querySelector('#modal');
+    const overlay = document.querySelector('#overlay');
     modal.classList.remove('hidden')
-    menu.style.opacity = '20%'
+    overlay.classList.remove('hidden')
+}
+
+const closeModal = () => {
+    const modal = document.querySelector('#modal');
+    const overlay = document.querySelector('#overlay');
+    modal.classList.add('hidden')
+    overlay.classList.add('hidden')
+}
+
+const handlePayBtnClick = (e) => {
+    e.preventDefault();
 }

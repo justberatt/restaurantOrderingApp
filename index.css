@@ -143,6 +143,7 @@ hr {
     padding: 20px;
     margin: auto;
     width: 90%;
+    z-index: 20;
 
     position: fixed;
     top: 50%;
@@ -171,9 +172,27 @@ hr {
     margin-bottom: 15px;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent */
+    z-index: 10; /* Higher than the background but lower than the modal */
+}
+
+.close-modal-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
+
 
 @media only screen and (min-width: 600px) {
     .modal {
