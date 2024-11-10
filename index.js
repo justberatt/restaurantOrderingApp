@@ -94,6 +94,15 @@ const closeModal = () => {
     overlay.classList.add('hidden')
 }
 
-const handlePayBtnClick = (e) => {
-    e.preventDefault();
-}
+const paymentForm = document.querySelector('#payment-form');
+paymentForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const paymentFormData = new FormData(paymentForm)
+    const name = paymentFormData.get('cardHolderName')
+    document.querySelector('#payment-success-msg-container').innerHTML = `
+        <p class="payment-success-msg">Thanks, ${name}! Your order is on your way!</p>
+    `
+    closeModal()
+    document.querySelector('#pre-checkout-list-container').classList.add('hidden')
+    renderPrecheckoutList()
+})
