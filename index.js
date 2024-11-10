@@ -99,8 +99,10 @@ paymentForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const paymentFormData = new FormData(paymentForm)
     const name = paymentFormData.get('cardHolderName')
-    document.querySelector('#payment-success-msg-container').innerHTML = `
-        <p class="payment-success-msg">Thanks, ${name}! Your order is on your way!</p>
+    document.querySelector('#payment-success-wrapper').innerHTML = `
+        <div class="payment-success-msg-container">
+            <p class="payment-success-msg">Thanks, ${name}! Your order is on your way!</p>
+        </div>
     `
     closeModal()
     document.querySelector('#pre-checkout-list-container').classList.add('hidden')
