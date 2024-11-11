@@ -14,7 +14,6 @@ const menuItems = menuArray.map(item => {
             </div>
             <button class="add-to-card__btn" data-add="${item.id}" aria-label="Add ${item.name} to cart">+</button>
         </li>
-        <hr>
     `
 }).join('')
 
