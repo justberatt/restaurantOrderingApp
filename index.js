@@ -3,7 +3,7 @@ import { menuArray } from './data.js'
 const menu = document.querySelector('#menu');
 const menuItems = menuArray.map(item => {
     return `
-        <li class="menu-item">
+        <li class="menu-item" role="menuitem">
             <div class="emoji-container">
                 <div id=${item.name.toLowerCase()}-emoji class="emoji">${item.emoji}</div>
             </div>
@@ -12,7 +12,7 @@ const menuItems = menuArray.map(item => {
                 <p class="ingredients">${item.ingredients.join(' ')}</p>
                 <h4 class="price">$${item.price}</h4>
             </div>
-            <button class="add-to-card__btn" data-add="${item.id}">+</button>
+            <button class="add-to-card__btn" data-add="${item.id}" aria-label="Add ${item.name} to cart">+</button>
         </li>
         <hr>
     `
@@ -71,9 +71,9 @@ const handleAddToListClick = (addButtonID) => {
 const renderPrecheckoutList = () => {
     const preCheckoutList = checkoutListArr.map(item => {
         return `
-            <li class="ordered-item">
+            <li class="ordered-item" role="listitem">
                 <h2 id="${item.name.toLowerCase()}" class="ordered-item-name">${item.name}</h2>
-                <button class="remove-btn" id="remove-btn" data-remove="${item.id}">remove</button>
+                <button class="remove-btn" id="remove-btn" data-remove="${item.id}"  aria-label="Remove ${item.name} from cart">remove</button>
                 <h4 class="price">$${item.price}</h4>
             </li>
         `

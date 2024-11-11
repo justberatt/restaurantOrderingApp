@@ -12,34 +12,39 @@
     <body>
         <div class="wrapper">
             <div class="menu-container">
-                <ul id="menu" class="menu"></ul>
+                <ul id="menu" class="menu" aria-live="polite"></ul>
                 <div class="pre-checkout-list-container hidden" id="pre-checkout-list-container">
                     <h2 class="pre-checkout-list-header">Your order</h2>
-                    <ul class="pre-checkout-list" id="pre-checkout-list"></ul>
+                    <ul class="pre-checkout-list" id="pre-checkout-list" aria-live="polite"></ul>
                     <hr style="height: 2px; background-color: #393333;">
                     <div class="total-price-container">
                         <h2>Total Price</h2>
-                        <h4 class="total-price" id="total-price"></h4>
+                        <h4 class="total-price" id="total-price" aria-live="assertive"></h4>
                     </div>
-                    <button class="complete-order-btn" id="complete-order-btn">Complete Order</button>
+                    <button class="complete-order-btn" id="complete-order-btn" aria-label="Complete your order">Complete Order</button>
                 </div>
-                <div class="payment-success-wrapper" id="payment-success-wrapper">
-                </div>
+                <div
+                    class="payment-success-wrapper"
+                    id="payment-success-wrapper"
+                    aria-live="assertive"
+                    role="status"></div>
             </div>
         </div>
         <div class="overlay hidden" id="overlay"></div>
         <div class="modal hidden" id="modal">
             <i 
                 class="fa-regular fa-circle-xmark close-modal-btn"
-                id="close-modal-btn">
+                id="close-modal-btn"
+                aria-label="Close payment form">
             </i>
-            <form class="payment-form" id="payment-form">
-                <h4>Enter Card Details</h4>
+            <form class="payment-form" id="payment-form" aria-labelledby="payment-form-heading">
+                <h4 id="payment-form-heading">Enter Card Details</h4>
                 <input
                     type="text" 
                     name="cardHolderName" 
                     id="cardHolderName" 
                     placeholder="Enter your name"
+                    aria-label="Cardholder's name"
                     required>
                 <input 
                     type="text" 
@@ -47,11 +52,13 @@
                     id="card-number" 
                     maxlength="19" 
                     placeholder="1234 1234 1234 1234"
+                    aria-label="Credit card number"
                     required>
                 <input 
                     type="text" 
                     name="cvv-number" 
                     id="cvv-number"
+                    aria-label="CCV number"
                     required>
                 <button type="submit" id="pay-btn" class="pay-btn">Pay</button>
             </form>
